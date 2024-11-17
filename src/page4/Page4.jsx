@@ -44,24 +44,25 @@ const Page4 = () => {
     navigate("/page3"); 
   };
 
-  const getBoundaryClass = () => {
-    if (selectedOptions.includes(1)) return "flex-start";
-    else if (selectedOptions.includes(3)) return "flex-end";
-    return "center";
-  };
-
-  const getRoundBoundaryWidth = () => {
-    switch (selectedOptions.length) {
-      case 1:
-        return '114px';
-      case 2:
-        return '264px';
-      case 3:
-        return '414px';
-      default:
-        return '0px';
+  const getRoundBoundaryLeft = () => {
+    if (selectedOptions.includes(1)) {
+      return '0px';
+    } else if (selectedOptions.includes(2)) {
+      return '150px';
+    } else {
+      return '300px';
     }
   };
+
+  const getRoundBoundaryRight = () => {
+    if (selectedOptions.includes(3)) {
+      return '0px';
+    } else if (selectedOptions.includes(2)) {
+      return '150px';
+    } else {
+      return '300px';
+    }
+  }
 
   const getRoundBoundaryVisibility = () => {
     return selectedOptions.length > 0 ? 'visible' : 'invisible' ;
@@ -75,11 +76,11 @@ const Page4 = () => {
       <h1>원하는 놀이기구의 난이도를 선택해주세요</h1>
       <p className="subtext">하 / 중 / 상 (중복 선택 가능)</p>
       <div className="options">
-        <div id="boundary" className={`${getBoundaryClass()}`}>
+        <div id="boundary">
           <div 
             id='round-boundary' 
             className={getRoundBoundaryVisibility()}
-            style={{ width: getRoundBoundaryWidth() }}></div>
+            style={{ left: getRoundBoundaryLeft(), right: getRoundBoundaryRight()}}></div>
         </div>
         <div
           className={`option ${selectedOptions.includes(1) ? "selected" : ""}`}
