@@ -70,6 +70,32 @@ const Page4 = () => {
 
   return (
     <div className="container">
+      <style>
+        {`
+          .options {
+            position: relative;
+            justify-content: center;
+          }
+          .option {
+            box-sizing: border-box;
+            width: 100px;
+            height: 100px;
+            margin: 0 25px;
+            padding: 0;
+            border-radius: 50%;
+            justify-content: center;
+          }
+          
+          .option.selected .subtext-context{
+            color: darkgreen;
+          }
+          
+          .subtext-context {
+            padding: 0;
+            font-size: 22px;
+          }
+        `}
+      </style>
       <div className="progress-bar">
         <div className="progress" style={{ width: `${(4 / 5) * 100}%` }}></div>
       </div>
@@ -84,26 +110,20 @@ const Page4 = () => {
         </div>
         <div
           className={`option ${selectedOptions.includes(1) ? "selected" : ""}`}
-          //onMouseEnter={() => handleSelect(1)}
           onClick={() => handleSelect(1)}
         >
-          {/*<img src="/assets/girl.png" alt="하" />*/}
           <p className="subtext-context">하</p>
         </div>
         <div
           className={`option ${selectedOptions.includes(2) ? "selected" : ""}`}
-          //onMouseEnter={() => handleSelect(2)}
           onClick={() => handleSelect(2)}
         >
-          {/*<img src="/assets/boy.png" alt="중" />*/}
           <p className="subtext-context">중</p>
         </div>
         <div
           className={`option ${selectedOptions.includes(3) ? "selected" : ""}`}
-          //onMouseEnter={() => handleSelect(3)}
           onClick={() => handleSelect(3)}
         >
-          {/*<img id="img3" src="/assets/family.png" alt="상" />*/}
           <p className="subtext-context">상</p>
         </div>
       </div>
