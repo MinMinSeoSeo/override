@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from 'axios';
 import "./page3.css"; 
 
 const Page3 = () => {
@@ -12,14 +11,7 @@ const Page3 = () => {
   };
 
   const handleNext = async () => {
-    if (selectedOption !== null) {
-      try {
-        await axios.post('/api/알아서정하시면됩니당~', { option: selectedOption });
-        navigate("/page4");
-      } catch (error) {
-        console.error("Error sending option to server:", error);
-      }
-    }
+    navigate("/page4");
   };
 
   const handlePrevious = () => {
@@ -39,7 +31,7 @@ const Page3 = () => {
           onMouseEnter={() => handleSelect(1)}
           onClick={() => handleSelect(1)}
         >
-          <img src="/assets/girl.png" alt="고령자도 있어요" />
+          <img src="/assets/grandma.svg" alt="고령자도 있어요" />
           <p className="subtext-context">고령자도 있어요</p>
         </div>
         <div
@@ -47,7 +39,7 @@ const Page3 = () => {
           onMouseEnter={() => handleSelect(2)}
           onClick={() => handleSelect(2)}
         >
-          <img src="/assets/boy.png" alt="아이만 있어요" />
+          <img src="/assets/boy.svg" alt="아이만 있어요" />
           <p className="subtext-context">아이만 있어요</p>
         </div>
         <div
@@ -55,7 +47,7 @@ const Page3 = () => {
           onMouseEnter={() => handleSelect(3)}
           onClick={() => handleSelect(3)}
         >
-          <img id="img3" src="/assets/family.png" alt="둘 다 있어요" />
+          <img id="img3" src="/assets/family.svg" alt="둘 다 있어요" />
           <p className="subtext-context">둘 다 있어요</p>
         </div>
       </div>
