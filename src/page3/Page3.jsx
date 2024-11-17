@@ -14,10 +14,11 @@ const Page3 = () => {
   const handleNext = async () => {
     if (selectedOption !== null) {
       try {
-        await axios.post('/api/seoin', { option: selectedOption });
+        await axios.post('/api/알아서정하시면됩니당~', { option: selectedOption });
         navigate("/page4");
       } catch (error) {
         console.error("Error sending option to server:", error);
+        navigate("/page4");
       }
     }
   };
