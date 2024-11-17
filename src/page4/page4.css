@@ -36,24 +36,69 @@ h1 {
 }
 
 .options {
+  position: relative;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   margin-top: 50px;
 }
 
+#boundary {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+
+  box-sizing: padding-box;
+  width: 417px;
+  height: 117px;
+
+  z-index: -1;
+  display: flex;
+}
+
+#boundary.flex-start {
+  justify-content: flex-start;
+}
+
+#boundary.center {
+  justify-content: center;
+}
+
+#boundary.flex-end {
+  justify-content: flex-end;
+}
+
+#round-boundary {
+  box-sizing: padding-box;
+  height: 114px;
+  border: 1.5px solid #4caf50;
+  border-radius: 57.75px;
+  /*transition: width 0.3s;*/
+}
+
+#round-boundary.invisible {
+  display: none;
+}
+
+#round-boundary.visible {
+  display: block;
+}
+
 .option {
-  width: 150px;
-  height: 180px;
-  padding: 10px;
+  box-sizing: border-box;
+  width: 100px;
+  height: 100px;
+  margin: 0 25px;
+  padding: 0;
   border: 1px solid transparent;
   border-color: #afafaf;
-  border-radius: 10px;
+  border-radius: 50%;
   text-align: center;
   cursor: pointer;
   transition: background-color 0.3s, border-color 0.3s;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; 
+  justify-content: center; 
   align-items: center;
 }
 
@@ -64,6 +109,10 @@ h1 {
 .option.selected {
   border-color: #4caf50;
   background-color: #f0f8f0;
+}
+
+.option.selected .subtext-context{
+  color: darkgreen;
 }
 
 .option img {
@@ -78,8 +127,8 @@ h1 {
 
 .subtext-context {
   margin: 0;
-  padding-top: 10px;
-  font-size: 16px;
+  padding: 0;
+  font-size: 22px;
   color: #333;
 }
 
