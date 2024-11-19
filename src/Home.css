@@ -34,11 +34,10 @@
   flex: 1;
   flex-direction: column;
   flex-grow: 1;
-  gap: 92px;
+  gap: 180px;
   justify-content: center;
   position: relative;
   width: 100%;
-  margin-bottom: 30px;
 }
 
 .home .group {
@@ -74,8 +73,8 @@
 }
 
 .logo {
-  height: 180px;
-  width: 600px;
+  height: 250px;
+  width: 700px;
   opacity: 0; 
   transform: translateY(20px);
   animation: fadeInUp 1.0s ease-out forwards; 
@@ -99,7 +98,7 @@
   font-size: 15px;
   font-weight: 400;
   letter-spacing: 0;
-  line-height: normal;
+  line-height: 2;
   position: relative;
   text-align: center;
   width: fit-content;
@@ -125,9 +124,16 @@
 
 
 .home .next-button {
-  padding: 20px 40px;
+  padding: 15px 30px;
   border: none;
-  border-radius: 5px;
+  border-radius: 15px;
   cursor: pointer;
   font-size: 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* 그림자 추가 */
+  transition: box-shadow 0.3s ease; /* 그림자 변경 시 부드러운 애니메이션 */
+}
+
+/* 버튼에 마우스를 올렸을 때 그림자 강조 */
+.home .next-button:hover {
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3); /* 그림자 더 진하게 */
 }
