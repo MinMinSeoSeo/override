@@ -126,6 +126,14 @@ const Page5 = () => {
     { id: 5, name: '(여러 개 추가 예정)', active: false },
   ]);
 
+  function handleBadgeClick(badgeId) {
+    setBadgeActiveList(
+      badgeActiveList.map((badge) =>
+        badge.id === badgeId ? { ...badge, active: !badge.active } : badge,
+      ),
+    );
+  }
+
   return (
     <Container>
       <TopContent>
@@ -142,15 +150,7 @@ const Page5 = () => {
                 <Badge
                   key={badge.id}
                   $variant={badge.active ? 'primary' : ''}
-                  onClick={() => {
-                    setBadgeActiveList(
-                      badgeActiveList.map((item) =>
-                        item.id === badge.id
-                          ? { ...item, active: !item.active }
-                          : item,
-                      ),
-                    );
-                  }}
+                  onClick={() => handleBadgeClick(badge.id)}
                 >
                   {badge.name}
                 </Badge>
