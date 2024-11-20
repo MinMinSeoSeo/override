@@ -31,7 +31,7 @@ const Page2 = () => {
           onMouseEnter={() => handleSelect(1)}
           onClick={() => handleSelect(1)}
         >
-          <img src="/assets/grandma.svg" alt="가족" />
+          <img src="/assets/family.png" alt="가족" />
           <p className="subtext-context">가족</p>
         </div>
         <div
@@ -39,7 +39,7 @@ const Page2 = () => {
           onMouseEnter={() => handleSelect(2)}
           onClick={() => handleSelect(2)}
         >
-          <img src="/assets/boy.svg" alt="연인" />
+          <img src="/assets/couple.png" alt="연인" />
           <p className="subtext-context">연인</p>
         </div>
         <div
@@ -47,7 +47,7 @@ const Page2 = () => {
           onMouseEnter={() => handleSelect(3)}
           onClick={() => handleSelect(3)}
         >
-          <img src="/assets/family.svg" alt="친구" />
+          <img src="/assets/friend.png" alt="친구" />
           <p className="subtext-context">친구</p>
         </div>
         <div
@@ -55,7 +55,7 @@ const Page2 = () => {
           onMouseEnter={() => handleSelect(4)}
           onClick={() => handleSelect(4)}
         >
-          <img src="/assets/grandma.svg" alt="혼자" />
+          <img src="/assets/alone.png" alt="혼자" />
           <p className="subtext-context">혼자</p>
         </div>
       </div>
