@@ -1,3 +1,13 @@
+/*import React from "react";
+
+const Page5 = () => {
+  return <div>Page5</div>;
+};
+
+export default Page5;*/
+
+/*
+
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -171,4 +181,4 @@ const Page5 = () => {
   );
 };
 
-export default Page5;
+export default Page5;*/
