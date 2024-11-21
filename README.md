@@ -1,72 +1,25 @@
-# Getting Started with Create React App
+## 프로그램 제목 : `오버라이드`
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 설명
+대형 테마파크에서 시간과 대기 시간을 최적화한 놀이기구 조합을 추천하는 프로그램.
 
-## Available Scripts
+## 활용
+각 놀이기구를 순열로 나열하고, 사용자의 선호도(스릴, 휴식, 가족 친화적)를 기반으로 놀이기구를 추천한다. 대기 시간이 길 경우, 다른 놀이기구 조합을 우선으로 추천해 효율적인 동선을 설계한다.
 
-In the project directory, you can run:
+## 알고리즘 전략 : Backtracking
 
-### `npm start`
+제한된 시간 내에 어떤 놀이기구를 어떤 순서로 탈지 결정하는 것은 탈 수 있는 놀이기구의 개수와 이용자의 만족도에 큰 영향을 미친다. 따라서 다양한 놀이기구 탑승 순서와 조합의 경우의 수를 고려하여 조건을 만족시키는 동시에, 이용자의 효용을 극대화할 수 있는 알고리즘이 필요하다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Backtracking 알고리즘은 트리 구조의 상태 공간을 탐색하는 알고리즘 방법론의 일종으로, 다음 경로의 탐색이 유망하지 않을 경우(조건에 위배될 경우) 이전 상태로 되돌아가 탐색을 이어나가므로, 경우의 수가 다양할 경우에도 효율적으로 탐색할 수 있다.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+따라서 Backtracking 알고리즘을 이용하면, 놀이기구의 조합이나 순서를 구성하는 과정에서 놀이기구 대기 시간과 이용 시간을 고려하여 제한된 시간을 초과하는 경우의 수를 배제할 수 있고, 휴식 조건이나 사용자 취향 조건에 적합하지 않은 경우에도 마찬가지로 가지치기(Pruning)를 할 수 있으므로, 이용자들의 효용 합을 최대화할 수 있는 경우의 수를 보다 효과적으로 탐색할 수 있다.
 
-### `npm test`
+## 개발 프로그래밍 언어 : 웹 
+프론트엔드 : React - Javascript
+백엔드 : Firebase, FastAPI - Serverless
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 기대 효과
+이 프로그램은 놀이기구 효율을 최대화하여 사용자가 테마파크에서 제한된 시간 안에 최대한 많은 놀이기구를 효율적으로 경험할 수 있도록 돕는다. 사용자의 개별 선호에 따라 스릴 강도, 휴식 타이밍, 가족 친화적인 요소 등을 고려한 맞춤형 추천을 제공해 보다 알찬 테마파크 체험을 가능하게 하고, 그룹 맞춤 추천 기능을 통해 함께 온 사람들의 선호도까지 반영하여 모든 구성원이 즐길 수 있는 놀이기구를 제안함으로써 개인뿐만 아니라 가족이나 친구와 함께 방문한 사용자들 모두가 만족할 수 있도록 할 수 있다. 이를 통해 자주 가지 않은 테마파크를 더욱 알차고 효율적으로 즐길 수 있다.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# AlgorithmProject
-# override
+## 실행
+`npm start`
