@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./page1_4.css"; 
+import "../page1_4.css"; 
 import "./page4.css"; 
 
 const Page4 = () => {
