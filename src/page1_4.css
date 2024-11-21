@@ -48,6 +48,7 @@ h1 {
   display: flex;
   justify-content: space-around;
   margin-top: 30px;
+  gap: 20px;
 }
 
 .option {
@@ -67,7 +68,7 @@ h1 {
 }
 
 .option:hover {
-  background-color: #e0f7fa; 
+  background-color: #4caf4f6b;
 }
 
 .option.selected {

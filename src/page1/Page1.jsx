@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-import "./Page1.css"; 
 
 const Page1 = () => {
     const [selectedOption, setSelectedOption] = useState(null);

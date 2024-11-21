@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./page2.css"; 
 
 const Page2 = () => {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -21,14 +20,13 @@ const Page2 = () => {
   return (
     <div className="container">
       <div className="progress-bar">
-        <div className="progress" style={{ width: `${(3 / 5) * 100}%` }}></div>
+        <div className="progress" style={{ width: `${(2 / 5) * 100}%` }}></div>
       </div>
       <h1>인원 형태를 입력해주세요.</h1>
       <p className="subtext">가족 / 친구 / 연인 / 혼자 </p>
       <div className="options">
         <div
           className={`option ${selectedOption === 1 ? "selected" : ""}`}
-          onMouseEnter={() => handleSelect(1)}
           onClick={() => handleSelect(1)}
         >
           <img src="/assets/family.png" alt="가족" />
@@ -36,7 +34,6 @@ const Page2 = () => {
         </div>
         <div
           className={`option ${selectedOption === 2 ? "selected" : ""}`}
-          onMouseEnter={() => handleSelect(2)}
           onClick={() => handleSelect(2)}
         >
           <img src="/assets/couple.png" alt="연인" />
@@ -44,7 +41,6 @@ const Page2 = () => {
         </div>
         <div
           className={`option ${selectedOption === 3 ? "selected" : ""}`}
-          onMouseEnter={() => handleSelect(3)}
           onClick={() => handleSelect(3)}
         >
           <img src="/assets/friend.png" alt="친구" />
@@ -52,7 +48,6 @@ const Page2 = () => {
         </div>
         <div
           className={`option ${selectedOption === 4 ? "selected" : ""}`} 
-          onMouseEnter={() => handleSelect(4)}
           onClick={() => handleSelect(4)}
         >
           <img src="/assets/alone.png" alt="혼자" />

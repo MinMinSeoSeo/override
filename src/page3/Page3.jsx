@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./page3.css"; 
 
 const Page3 = () => {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -28,7 +27,6 @@ const Page3 = () => {
       <div className="options">
         <div
           className={`option ${selectedOption === 1 ? "selected" : ""}`}
-          onMouseEnter={() => handleSelect(1)}
           onClick={() => handleSelect(1)}
         >
           <img src="/assets/grandma.svg" alt="고령자도 있어요" />
@@ -36,7 +34,6 @@ const Page3 = () => {
         </div>
         <div
           className={`option ${selectedOption === 2 ? "selected" : ""}`}
-          onMouseEnter={() => handleSelect(2)}
           onClick={() => handleSelect(2)}
         >
           <img src="/assets/boy.svg" alt="아이만 있어요" />
@@ -44,7 +41,6 @@ const Page3 = () => {
         </div>
         <div
           className={`option ${selectedOption === 3 ? "selected" : ""}`}
-          onMouseEnter={() => handleSelect(3)}
           onClick={() => handleSelect(3)}
         >
           <img id="img3" src="/assets/family.svg" alt="둘 다 있어요" />
