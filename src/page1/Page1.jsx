@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from 'axios';
 
 const Page1 = () => {
     const [selectedOption, setSelectedOption] = useState(null);
@@ -11,15 +10,7 @@ const Page1 = () => {
     };
 
   const handleNext = async () => {
-    if (selectedOption !== null) {
-      try {
-        await axios.post('/api/mingu', { option: selectedOption });
-        navigate("/page2");
-      } catch (error) {
-        console.error("Error sending option to server:", error);
-        navigate("/page2");
-      }
-    }
+    navigate("/page2");
   };
 
   const handlePrevious = () => {

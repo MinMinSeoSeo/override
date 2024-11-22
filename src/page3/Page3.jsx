@@ -24,7 +24,7 @@ const Page3 = () => {
       </div>
       <h1>구성원 중에 아이나 고령자가 있나요?</h1>
       <p className="subtext">아이 - 12세 이하 / 고령자 - 65세 이상</p>
-      <div className="options">
+      <div className="options" style={{ gap: '20px' }}>
         <div
           className={`option ${selectedOption === 1 ? "selected" : ""}`}
           onClick={() => handleSelect(1)}

@@ -24,7 +24,7 @@ const Page2 = () => {
       </div>
       <h1>인원 형태를 입력해주세요.</h1>
       <p className="subtext">가족 / 친구 / 연인 / 혼자 </p>
-      <div className="options">
+      <div className="options" style={{ gap: '20px' }}>
         <div
           className={`option ${selectedOption === 1 ? "selected" : ""}`}
           onClick={() => handleSelect(1)}
