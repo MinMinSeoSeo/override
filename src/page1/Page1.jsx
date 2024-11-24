@@ -75,7 +75,7 @@ const Page1 = () => {
         `}
       </style>
       <div className="progress-bar">
-        <div className="progress" style={{ width: `${(1 / 5) * 100}%` }}></div>
+        <div className="progress" style={{ width: `${(1 / 6) * 100}%` }}></div>
       </div>
       <h1>타고 싶은 놀이기구 개수를 선택해주세요.</h1>
       <div className="options">
