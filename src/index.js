@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import "@fontsource/inter/600.css"; //inter 폰트 가져오기
 import App from './App';
 // import reportWebVitals from './reportWebVitals';
 
