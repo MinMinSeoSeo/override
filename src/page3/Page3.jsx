@@ -20,7 +20,7 @@ const Page3 = () => {
   return (
     <div className="container">
       <div className="progress-bar">
-        <div className="progress" style={{ width: `${(3 / 5) * 100}%` }}></div>
+        <div className="progress" style={{ width: `${(3 / 6) * 100}%` }}></div>
       </div>
       <h1>구성원 중에 아이나 고령자가 있나요?</h1>
       <p className="subtext">아이 - 12세 이하 / 고령자 - 65세 이상</p>

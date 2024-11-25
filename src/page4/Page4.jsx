@@ -90,7 +90,7 @@ const Page4 = () => {
         `}
       </style>
       <div className="progress-bar">
-        <div className="progress" style={{ width: `${(4 / 5) * 100}%` }}></div>
+        <div className="progress" style={{ width: `${(4 / 6) * 100}%` }}></div>
       </div>
       <h1>원하는 놀이기구의 난이도를 선택해주세요</h1>
       <p className="subtext">하 / 중 / 상 (중복 선택 가능)</p>

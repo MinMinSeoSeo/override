@@ -6,6 +6,7 @@ import Page2 from "./page2/Page2";
 import Page3 from "./page3/Page3";
 import Page4 from "./page4/Page4";
 import Page5 from "./page5/Page5";
+import Result from "./result/Result";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
   {
     path: "/page5",
     element: <Page5 />,
+  },  
+  {
+    path: "/result",
+    element: <Result />,
   },
 ]);
 

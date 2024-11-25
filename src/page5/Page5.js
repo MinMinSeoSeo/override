@@ -31,7 +31,7 @@ const ProgressBar = styled.div`
   background: #e5e5e5;
 
   .progress-bar-fill {
-    width: 100%;
+    width: ${(5 / 6) * 100}%;
     height: 100%;
     border-radius: 9999px;
     background: #58cc02;
@@ -162,7 +162,7 @@ const Page5 = () => {
       <BottomContent>
         <ButtonWrapper>
           <Button to="/page4">이전</Button>
-          <Button to="/page6" $variant="primary">
+          <Button to="/result" $variant="primary">
             다음
           </Button>
         </ButtonWrapper>

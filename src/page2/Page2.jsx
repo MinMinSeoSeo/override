@@ -20,7 +20,7 @@ const Page2 = () => {
   return (
     <div className="container">
       <div className="progress-bar">
-        <div className="progress" style={{ width: `${(2 / 5) * 100}%` }}></div>
+        <div className="progress" style={{ width: `${(2 / 6) * 100}%` }}></div>
       </div>
       <h1>인원 형태를 입력해주세요.</h1>
       <p className="subtext">가족 / 친구 / 연인 / 혼자 </p>
