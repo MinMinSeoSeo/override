@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../page1_4.css";
+import "./result.css"; 
 import data from "../data/data.json";
 
 const Result = () => {
   const navigate = useNavigate();
   const [displayedCombos, setDisplayedCombos] = useState(2); // 처음에 A, B만 표시
-  const [currentScroll, setCurrentScroll] = useState({ A: 0, B: 0, C: 0, D: 0 }); // 각 조합의 스크롤 상태
 
   // 데이터 4개씩 나누기
   const getRandomCombos = () => {
@@ -33,19 +33,6 @@ const Result = () => {
     }
   };
 
-  const handleScroll = (combo, direction) => {
-    console.log(`Scrolling combo ${combo} in direction ${direction}`); // 스크롤 방향 확인
-    console.log("Previous Scroll State:", currentScroll);
-    setCurrentScroll((prev) => {
-      const newScroll = Math.max(
-        0,
-        Math.min(prev[combo] + direction, combos[combo].length - 3)
-      );
-      console.log(`Updated Scroll for Combo ${combo}:`, newScroll); // 업데이트된 스크롤 상태 확인
-      return { ...prev, [combo]: newScroll };
-    });
-  };
-
   const handleCardClick = (item) => {
     console.log("Card Clicked:", item); // 클릭한 카드 데이터 확인
     alert(
@@ -55,134 +42,58 @@ const Result = () => {
 
   return (
     <div className="container">
-      <style>
-        {`
-          .combo-box {
-            margin: 1rem 0;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            padding: 1rem;
-          }
-          
-          .items-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-          }
-          
-          .scroll-btn {
-            background: #58cc02;
-            border: none;
-            padding: 0.5rem 1rem;
-            color: white;
-            font-size: 1rem;
-            cursor: pointer;
-            border-radius: 5px;
-          }
-          
-          .items {
-            display: flex;
-            flex-direction: row; /* 가로 스크롤 */
-            overflow-x: auto;    /* 스크롤 가능 */
-            gap: 10px;
-            height: 150px;       /* 기본 높이 설정 */
-          }
-          
-          .item-card {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            width: 120px;
-            height: 150px;
-            background-color: white;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-          }
-          
-          .item-card img {
-            width: 100%;
-            height: 100px;
-            object-fit: cover;
-          }
-          
-          .item-card p {
-            margin: 5px 0 0;
-            text-align: center;
-            font-size: 14px;
-            color: #333;
-          }
-          
-          
-          .more-btn {
-            margin-top: 1rem;
-            padding: 0.5rem 2rem;
-            background-color: #42c62f;
-            border: none;
-            color: white;
-            border-radius: 10px;
-            font-size: 1rem;
-            cursor: pointer;
-          }          
-        `}
-      </style>
-
       <div className="progress-bar">
         <div className="progress" style={{ width: "100%" }}></div>
       </div>
       <h1>놀이기구 추천 조합을 확인해보세요!</h1>
       <div className="combos">
         {combos.slice(0, displayedCombos).map((combo, index) => {
-          console.log(`Rendering Combo ${String.fromCharCode(65 + index)}:`, combo); // 조합 데이터를 출력
           return (
-            <div key={index} className="combo-box">
-              <h2>조합 {String.fromCharCode(65 + index)}</h2>
-              <div className="items-wrapper">
-                <button
-                  className="scroll-btn"
-                  onClick={() => handleScroll(index, -1)}
-                  disabled={currentScroll[index] === 0}
-                >
-                  {"<"}
-                </button>
-                <div className="items">
-                  {combo.slice(
-                    currentScroll[index] || 0,
-                    (currentScroll[index] || 0) + 3
-                  ).map((item, idx) => {
-                    console.log("Rendering item:", item);
+            <div key={index} className="combo-container">
+              <div className="combo-label">
+                {String.fromCharCode(65 + index)} {/* A, B, C... */}
+              </div>
+              <div className="combo-box">
+                <div className="items-wrapper">
+                  {combo.map((item, idx) => {
+                    const globalIndex = idx + 1; // 순서 표시
+
                     return (
                       <div
                         key={idx}
                         className="item-card"
                         onClick={() => handleCardClick(item)}
                       >
-                        <img
-                          src={item.image_url}
-                          alt={item["놀이기구 이름"]}
-                          onError={() => console.error("이미지 로드 실패:", item.image_url)}
-                        />
-                        <p>{item["놀이기구 이름"]}</p>
+                        {/* 순서 원 */}
+                        <div className="item-order">
+                          <span>{globalIndex}</span>
+                        </div>
+                        {/* 놀이기구 이름 */}
+                        <div className="item-name">
+                          {item["놀이기구 이름"]}
+                        </div>
+                        {/* 이미지 */}
+                        <div className="item-image-wrapper">
+                          <img
+                            src={item.image_url}
+                            alt={item["놀이기구 이름"]}
+                            className="item-image"
+                            onError={() =>
+                              console.error("이미지 로드 실패:", item.image_url)
+                            }
+                          />
+                        </div>
                       </div>
                     );
                   })}
                 </div>
-
-
-                <button
-                  className="scroll-btn"
-                  onClick={() => handleScroll(index, 1)}
-                  disabled={currentScroll[index] + 3 >= combo.length}
-                >
-                  {">"}
-                </button>
               </div>
             </div>
           );
         })}
       </div>
+
+
       {displayedCombos < combos.length && (
         <button className="more-btn" onClick={handleMoreCombos}>
           더보기
