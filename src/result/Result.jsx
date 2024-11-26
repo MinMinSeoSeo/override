@@ -4,16 +4,18 @@ import "../page1_4.css";
 import "./result.css"; 
 import data from "../data/data.json";
 
-const Result = () => {
+const Result = ({ selectedCount }) => {
   const navigate = useNavigate();
   const [displayedCombos, setDisplayedCombos] = useState(2);
   const [flippedCards, setFlippedCards] = useState({});
+  
 
   const getRandomCombos = () => {
-    const shuffled = [...data].sort(() => 0.5 - Math.random());
+    const shuffled = [...data].sort(() => 0.5 - Math.random()); 
     const combos = [];
-    while (shuffled.length) {
-      combos.push(shuffled.splice(0, 4)); 
+    for (let i = 0; i < Math.ceil(shuffled.length / selectedCount); i++) {
+      const group = shuffled.slice(i * selectedCount, (i + 1) * selectedCount); 
+      if (group.length > 0) combos.push(group);
     }
     return combos;
   };

@@ -1,17 +1,22 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Page1 = () => {
+const Page1 = ({ setSelectedCount }) => {
     const [selectedOption, setSelectedOption] = useState(null);
     const navigate = useNavigate();
   
     const handleSelect = (option) => {
       setSelectedOption(option);
     };
-
-  const handleNext = async () => {
-    navigate("/page2");
-  };
+  
+    const handleNext = () => {
+      if (selectedOption) {
+        setSelectedCount(selectedOption);
+        navigate("/page2"); 
+      } else {
+        alert("놀이기구 개수를 선택해주세요!"); 
+      }
+    };
 
   const handlePrevious = () => {
     navigate("/"); 
@@ -79,17 +84,16 @@ const Page1 = () => {
       </div>
       <h1>타고 싶은 놀이기구 개수를 선택해주세요.</h1>
       <div className="options">
-                {[1, 2, 3, 4, 5].map((option) => (
-                    <div
-                        key={option}
-                        className={`option ${selectedOption === option ? "selected" : ""}`}
-                        onClick={() => handleSelect(option)}
-                    >
-                        <p className="subtext-context">{option}</p>
-                    </div>
-                ))}
-            </div>
-
+        {[1, 2, 3, 4, 5].map((option) => (
+          <div
+            key={option}
+            className={`option ${selectedOption === option ? "selected" : ""}`}
+            onClick={() => handleSelect(option)}
+          >
+            <p className="subtext-context">{option}</p>
+          </div>
+        ))}
+      </div>
       <div className="navigation">
         <button className="prev-button" onClick={handlePrevious}>
           이전
