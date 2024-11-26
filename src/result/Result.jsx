@@ -57,7 +57,6 @@ const Result = () => {
                       className={`item-card ${isFlipped ? "flipped" : ""}`}
                       onClick={() => handleCardClick(globalIndex)}
                     >
-                      {/* 앞면 */}
                       <div className="item-card-front">
                         <div className="item-order">
                           <span>{itemIndex + 1}</span>
@@ -73,7 +72,6 @@ const Result = () => {
                           />
                         </div>
                       </div>
-                      {/* 뒷면 */}
                       <div className="item-card-back">
                         <div className="item-image-wrapper">
                           <div className="item-details">

@@ -79,38 +79,17 @@ const Page1 = () => {
       </div>
       <h1>타고 싶은 놀이기구 개수를 선택해주세요.</h1>
       <div className="options">
-        <div id="horizontal-line"></div>
-        <div
-          className={`option ${selectedOption === 1 ? "selected" : ""}`}
-          onClick={() => handleSelect(1)}
-        >
-          <p className="subtext-context">1</p>
-        </div>
-        <div
-          className={`option ${selectedOption === 2 ? "selected" : ""}`}
-          onClick={() => handleSelect(2)}
-        >
-          <p className="subtext-context">2</p>
-        </div>
-        <div
-          className={`option ${selectedOption === 3 ? "selected" : ""}`}
-          onClick={() => handleSelect(3)}
-        >
-          <p className="subtext-context">3</p>
-        </div>
-        <div
-          className={`option ${selectedOption === 4 ? "selected" : ""}`}
-          onClick={() => handleSelect(4)}
-        >
-          <p className="subtext-context">4</p>
-        </div>
-        <div
-          className={`option ${selectedOption === 5 ? "selected" : ""}`}
-          onClick={() => handleSelect(5)}
-        >
-          <p className="subtext-context">5</p>
-        </div>
-      </div>
+                {[1, 2, 3, 4, 5].map((option) => (
+                    <div
+                        key={option}
+                        className={`option ${selectedOption === option ? "selected" : ""}`}
+                        onClick={() => handleSelect(option)}
+                    >
+                        <p className="subtext-context">{option}</p>
+                    </div>
+                ))}
+            </div>
+
       <div className="navigation">
         <button className="prev-button" onClick={handlePrevious}>
           이전

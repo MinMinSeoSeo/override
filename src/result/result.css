@@ -194,27 +194,3 @@ h1 {
   background-color: #adadad;
   color: #ffffff;
 }
-
-.navigation {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-}
-
-.prev-button,
-.next-button {
-  padding: 0.5rem 1.5rem;
-  background-color: #ffffff;
-  border: 1px solid #adadad;
-  color: #adadad;
-  border-radius: 10px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.prev-button:hover,
-.next-button:hover {
-  background-color: #adadad;
-  color: #ffffff;
-}
