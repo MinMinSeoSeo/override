@@ -41,6 +41,7 @@ const Result = ({ selectedCount }) => {
         <div className="progress" style={{ width: "100%" }}></div>
       </div>
       <h1>놀이기구 추천 조합을 확인해보세요!</h1>
+      <p className="subtext">각 카드를 클릭해보세요☺︎</p>
       <div className="combos">
         {combos.slice(0, displayedCombos).map((combo, comboIndex) => (
           <div key={comboIndex} className="combo-container">
@@ -85,6 +86,12 @@ const Result = ({ selectedCount }) => {
                             </div>
                             <div>
                               <strong>• 난이도:</strong> {item["난이도(스릴)"]}
+                            </div>
+                            <div>
+                              <strong>• 이용 정보:</strong> {item["이용 정보"]}
+                            </div>
+                            <div>
+                              <strong>• 컨셉/태그:</strong> {item["컨셉/태그"]}
                             </div>
                           </div>
                         </div>

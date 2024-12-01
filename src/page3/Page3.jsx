@@ -46,6 +46,13 @@ const Page3 = () => {
           <img id="img3" src="/assets/family.svg" alt="둘 다 있어요" />
           <p className="subtext-context">둘 다 있어요</p>
         </div>
+        <div
+          className={`option ${selectedOption === 4 ? "selected" : ""}`}
+          onClick={() => handleSelect(4)}
+        >
+          <img src="/assets/free.svg" alt="둘 다 없어요" />
+          <p className="subtext-context">둘 다 없어요</p>
+        </div>
       </div>
       <div className="navigation">
         <button className="prev-button" onClick={handlePrevious}>

@@ -77,6 +77,15 @@ h1 {
   transform: rotateY(0deg);
 }
 
+.item-card-front .item-image-wrapper {
+  overflow-y: hidden; 
+}
+
+.item-card-back .item-image-wrapper {
+  overflow-y: auto; 
+}
+
+
 .item-card-front,
 .item-card-back {
   width: 100%;
