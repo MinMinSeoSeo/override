@@ -32,7 +32,7 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #58cc02; 
+  background-color: #58cc02;
   color: white;
   font-size: 1.5rem;
   font-weight: bold;
@@ -50,13 +50,13 @@ h1 {
   padding: 1rem;
   display: flex;
   align-items: center;
-  justify-content: space-around; 
+  justify-content: space-around;
 }
 
 .items-wrapper {
   display: flex;
   align-items: center;
-  justify-content: space-between; 
+  justify-content: space-between;
   gap: 1rem;
   width: 100%;
 }
@@ -67,6 +67,7 @@ h1 {
   perspective: 1000px;
   position: relative;
   overflow: visible;
+  cursor: pointer;
 }
 
 .item-card.flipped .item-card-front {
@@ -78,13 +79,12 @@ h1 {
 }
 
 .item-card-front .item-image-wrapper {
-  overflow-y: hidden; 
+  overflow-y: hidden;
 }
 
 .item-card-back .item-image-wrapper {
-  overflow-y: auto; 
+  overflow-y: auto;
 }
-
 
 .item-card-front,
 .item-card-back {
@@ -117,10 +117,9 @@ h1 {
   justify-content: center;
 }
 
-
 .item-card-back .item-details {
-  opacity: 0; 
-  transition: opacity 0.3s ease-in-out 0.2s; 
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out 0.2s;
 }
 
 .item-card.flipped .item-card-back .item-details {
@@ -129,7 +128,7 @@ h1 {
 
 .item-card:not(.flipped) .item-card-back .item-details {
   opacity: 0;
-  transition: opacity 0s ease-in-out; 
+  transition: opacity 0s ease-in-out;
 }
 
 .item-card .item-order {
@@ -147,7 +146,7 @@ h1 {
   justify-content: center;
   font-size: 0.9rem;
   font-weight: bold;
-  z-index: 10; 
+  z-index: 10;
 }
 
 .item-name {
@@ -185,7 +184,6 @@ h1 {
 .item-details strong {
   font-weight: bold;
 }
-
 
 .more-btn {
   margin-bottom: 1rem;

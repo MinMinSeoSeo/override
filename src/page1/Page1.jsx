@@ -1,25 +1,23 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+const Page1 = ({
+  pageIndex,
+  setPageIndex,
+  recommendRequest,
+  setRecommendRequest,
+}) => {
+  const handleSelect = (option) => {
+    setRecommendRequest({ ...recommendRequest, attractionCount: option });
+  };
 
-const Page1 = ({ setSelectedCount }) => {
-    const [selectedOption, setSelectedOption] = useState(null);
-    const navigate = useNavigate();
-  
-    const handleSelect = (option) => {
-      setSelectedOption(option);
-    };
-  
-    const handleNext = () => {
-      if (selectedOption) {
-        setSelectedCount(selectedOption);
-        navigate("/page2"); 
-      } else {
-        alert("놀이기구 개수를 선택해주세요!"); 
-      }
-    };
+  const handleNext = () => {
+    if (recommendRequest.attractionCount >= 1) {
+      setPageIndex(pageIndex + 1);
+    } else {
+      alert('놀이기구 개수를 선택해주세요!');
+    }
+  };
 
   const handlePrevious = () => {
-    navigate("/"); 
+    setPageIndex(pageIndex - 1);
   };
 
   return (
@@ -87,7 +85,9 @@ const Page1 = ({ setSelectedCount }) => {
         {[1, 2, 3, 4, 5].map((option) => (
           <div
             key={option}
-            className={`option ${selectedOption === option ? "selected" : ""}`}
+            className={`option ${
+              recommendRequest.attractionCount === option ? 'selected' : ''
+            }`}
             onClick={() => handleSelect(option)}
           >
             <p className="subtext-context">{option}</p>

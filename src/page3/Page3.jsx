@@ -1,20 +1,23 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-
-const Page3 = () => {
-  const [selectedOption, setSelectedOption] = useState(null);
-  const navigate = useNavigate();
-
+const Page3 = ({
+  pageIndex,
+  setPageIndex,
+  recommendRequest,
+  setRecommendRequest,
+}) => {
   const handleSelect = (option) => {
-    setSelectedOption(option);
+    setRecommendRequest({ ...recommendRequest, ageGroupStatus: option });
   };
 
   const handleNext = async () => {
-    navigate("/page4");
+    if (recommendRequest.ageGroupStatus !== '') {
+      setPageIndex(pageIndex + 1);
+    } else {
+      alert('아이나 고령자 여부를 선택해주세요!');
+    }
   };
 
   const handlePrevious = () => {
-    navigate("/page2"); 
+    setPageIndex(pageIndex - 1);
   };
 
   return (
@@ -26,29 +29,37 @@ const Page3 = () => {
       <p className="subtext">아이 - 12세 이하 / 고령자 - 65세 이상</p>
       <div className="options" style={{ gap: '20px' }}>
         <div
-          className={`option ${selectedOption === 1 ? "selected" : ""}`}
-          onClick={() => handleSelect(1)}
+          className={`option ${
+            recommendRequest.ageGroupStatus === 'elderly' ? 'selected' : ''
+          }`}
+          onClick={() => handleSelect('elderly')}
         >
           <img src="/assets/grandma.svg" alt="고령자도 있어요" />
           <p className="subtext-context">고령자도 있어요</p>
         </div>
         <div
-          className={`option ${selectedOption === 2 ? "selected" : ""}`}
-          onClick={() => handleSelect(2)}
+          className={`option ${
+            recommendRequest.ageGroupStatus === 'child' ? 'selected' : ''
+          }`}
+          onClick={() => handleSelect('child')}
         >
           <img src="/assets/boy.svg" alt="아이만 있어요" />
           <p className="subtext-context">아이만 있어요</p>
         </div>
         <div
-          className={`option ${selectedOption === 3 ? "selected" : ""}`}
-          onClick={() => handleSelect(3)}
+          className={`option ${
+            recommendRequest.ageGroupStatus === 'both' ? 'selected' : ''
+          }`}
+          onClick={() => handleSelect('both')}
         >
           <img id="img3" src="/assets/family.svg" alt="둘 다 있어요" />
           <p className="subtext-context">둘 다 있어요</p>
         </div>
         <div
-          className={`option ${selectedOption === 4 ? "selected" : ""}`}
-          onClick={() => handleSelect(4)}
+          className={`option ${
+            recommendRequest.ageGroupStatus === 'none' ? 'selected' : ''
+          }`}
+          onClick={() => handleSelect('none')}
         >
           <img src="/assets/free.svg" alt="둘 다 없어요" />
           <p className="subtext-context">둘 다 없어요</p>

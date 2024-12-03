@@ -1,46 +1,62 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "../page1_4.css"; 
-import "./page4.css"; 
+import '../page1_4.css';
+import './page4.css';
 
-const Page4 = () => {
-  const [selectedOptions, setSelectedOptions] = useState([]);
-  const navigate = useNavigate();
+const Page4 = ({
+  pageIndex,
+  setPageIndex,
+  recommendRequest,
+  setRecommendRequest,
+}) => {
+  const difficultyLevels = recommendRequest.difficultyLevels;
 
   const handleSelect = (option) => {
-    setSelectedOptions(prev => {
-      if (prev.includes(option)) { // 이미 선택된 옵션을 클릭한 경우
-        if (prev.length === 3 && option === 2) {
-          // (예외 처리) 하, 중, 상이 모두 선택된 상황 => 중 클릭 => 중만 선택되도록 (나머지는 선택 해제)
-          return [option];
-        } else {
-          // 그 외 경우엔, 정상적으로 클릭한 옵션에 대해 선택 해제 실행
-          return prev.filter(o => o !== option);
-        }
-      } else { // 새로운(선택되지 않은) 옵션을 클릭한 경우
-        if (prev.length === 1 && Math.abs(prev[0] - option) === 2) {
-          // 하를 선택한 상황에서 상을 선택하거나, 상을 선택한 상황에서 하를 선택한 경우 => 하, 중, 상 모두 선택되도록
-          return [1,2,3];
-        } else {
-          // 선택한 옵션 추가
-          return [...prev, option].sort();
-        }
+    let newDifficultyLevels = [];
+
+    if (difficultyLevels.includes(option)) {
+      // 이미 선택된 옵션을 클릭한 경우
+      if (difficultyLevels.length === 'high' && option === 'medium') {
+        // (예외 처리) 하, 중, 상이 모두 선택된 상황 => 중 클릭 => 중만 선택되도록 (나머지는 선택 해제)
+        newDifficultyLevels = [option];
+      } else {
+        // 그 외 경우엔, 정상적으로 클릭한 옵션에 대해 선택 해제 실행
+        newDifficultyLevels = difficultyLevels.filter((o) => o !== option);
       }
+    } else {
+      // 새로운(선택되지 않은) 옵션을 클릭한 경우
+      if (
+        difficultyLevels.length === 'low' &&
+        Math.abs(difficultyLevels[0] - option) === 'medium'
+      ) {
+        // 하를 선택한 상황에서 상을 선택하거나, 상을 선택한 상황에서 하를 선택한 경우 => 하, 중, 상 모두 선택되도록
+        newDifficultyLevels = [('low', 'medium', 'high')];
+      } else {
+        // 선택한 옵션 추가
+        newDifficultyLevels = [...difficultyLevels, option].sort();
+      }
+    }
+
+    setRecommendRequest({
+      ...recommendRequest,
+      difficultyLevels: newDifficultyLevels,
     });
-  };  
+  };
 
   const handleNext = async () => {
-      navigate("/page5");
+    if (difficultyLevels.length > 0) {
+      setPageIndex(pageIndex + 1);
+    } else {
+      alert('난이도를 선택해주세요!');
+    }
   };
 
   const handlePrevious = () => {
-    navigate("/page3"); 
+    setPageIndex(pageIndex - 1);
   };
 
   const getRoundBoundaryLeft = () => {
-    if (selectedOptions.includes(1)) {
+    if (difficultyLevels.includes('low')) {
       return '0px';
-    } else if (selectedOptions.includes(2)) {
+    } else if (difficultyLevels.includes('medium')) {
       return '150px';
     } else {
       return '300px';
@@ -48,17 +64,17 @@ const Page4 = () => {
   };
 
   const getRoundBoundaryRight = () => {
-    if (selectedOptions.includes(3)) {
+    if (difficultyLevels.includes('high')) {
       return '0px';
-    } else if (selectedOptions.includes(2)) {
+    } else if (difficultyLevels.includes('medium')) {
       return '150px';
     } else {
       return '300px';
     }
-  }
+  };
 
   const getRoundBoundaryVisibility = () => {
-    return selectedOptions.length > 0 ? 'visible' : 'invisible' ;
+    return difficultyLevels.length > 0 ? 'visible' : 'invisible';
   };
 
   return (
@@ -96,26 +112,36 @@ const Page4 = () => {
       <p className="subtext">하 / 중 / 상 (중복 선택 가능)</p>
       <div className="options">
         <div id="boundary">
-          <div 
-            id='round-boundary' 
+          <div
+            id="round-boundary"
             className={getRoundBoundaryVisibility()}
-            style={{ left: getRoundBoundaryLeft(), right: getRoundBoundaryRight()}}></div>
+            style={{
+              left: getRoundBoundaryLeft(),
+              right: getRoundBoundaryRight(),
+            }}
+          ></div>
         </div>
         <div
-          className={`option ${selectedOptions.includes(1) ? "selected" : ""}`}
-          onClick={() => handleSelect(1)}
+          className={`option ${
+            difficultyLevels.includes('low') ? 'selected' : ''
+          }`}
+          onClick={() => handleSelect('low')}
         >
           <p className="subtext-context">하</p>
         </div>
         <div
-          className={`option ${selectedOptions.includes(2) ? "selected" : ""}`}
-          onClick={() => handleSelect(2)}
+          className={`option ${
+            difficultyLevels.includes('medium') ? 'selected' : ''
+          }`}
+          onClick={() => handleSelect('medium')}
         >
           <p className="subtext-context">중</p>
         </div>
         <div
-          className={`option ${selectedOptions.includes(3) ? "selected" : ""}`}
-          onClick={() => handleSelect(3)}
+          className={`option ${
+            difficultyLevels.includes('high') ? 'selected' : ''
+          }`}
+          onClick={() => handleSelect('high')}
         >
           <p className="subtext-context">상</p>
         </div>

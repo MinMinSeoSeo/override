@@ -1,5 +1,3 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -96,7 +94,7 @@ const ButtonWrapper = styled.div`
   align-items: center;
 `;
 
-const Button = styled(Link)`
+const Button = styled.button`
   box-sizing: border-box;
   text-decoration: none;
   display: flex;
@@ -117,21 +115,29 @@ const Button = styled(Link)`
   cursor: pointer;
 `;
 
-const Page5 = () => {
-  const [badgeActiveList, setBadgeActiveList] = useState([
-    { id: 1, name: '인생샷', active: false },
-    { id: 2, name: '공포', active: false },
-    { id: 3, name: '동심', active: false },
-    { id: 4, name: '짜릿함', active: false },
-    { id: 5, name: '(여러 개 추가 예정)', active: false },
-  ]);
+const Page5 = ({
+  pageIndex,
+  setPageIndex,
+  recommendRequest,
+  setRecommendRequest,
+}) => {
+  const badgeList = ['인생샷', '공포', '동심', '짜릿함'];
 
-  function handleBadgeClick(badgeId) {
-    setBadgeActiveList(
-      badgeActiveList.map((badge) =>
-        badge.id === badgeId ? { ...badge, active: !badge.active } : badge,
-      ),
-    );
+  function handleBadgeClick(badge) {
+    setRecommendRequest({
+      ...recommendRequest,
+      themeTags: recommendRequest.themeTags.includes(badge)
+        ? recommendRequest.themeTags.filter((tag) => tag !== badge)
+        : [...recommendRequest.themeTags, badge],
+    });
+  }
+
+  function handleNext() {
+    setPageIndex(pageIndex + 1);
+  }
+
+  function handlePrevious() {
+    setPageIndex(pageIndex - 1);
   }
 
   return (
@@ -146,13 +152,17 @@ const Page5 = () => {
           <InnerContent>
             <Heading>경험하고 싶은 테마가 있다면 모두 선택해주세요.</Heading>
             <BadgeList>
-              {badgeActiveList.map((badge) => (
+              {badgeList.map((badge, index) => (
                 <Badge
-                  key={badge.id}
-                  $variant={badge.active ? 'primary' : ''}
-                  onClick={() => handleBadgeClick(badge.id)}
+                  key={index}
+                  $variant={
+                    recommendRequest.themeTags.includes(badge)
+                      ? 'primary'
+                      : 'default'
+                  }
+                  onClick={() => handleBadgeClick(badge)}
                 >
-                  {badge.name}
+                  {badge}
                 </Badge>
               ))}
             </BadgeList>
@@ -161,8 +171,8 @@ const Page5 = () => {
       </TopContent>
       <BottomContent>
         <ButtonWrapper>
-          <Button to="/page4">이전</Button>
-          <Button to="/result" $variant="primary">
+          <Button onClick={handlePrevious}>이전</Button>
+          <Button $variant="primary" onClick={handleNext}>
             다음
           </Button>
         </ButtonWrapper>

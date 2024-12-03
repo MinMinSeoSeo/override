@@ -1,120 +1,86 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "../page1_4.css";
-import "./result.css"; 
-import data from "../data/data.json";
+import React, { useEffect, useState } from 'react';
+import '../page1_4.css';
+import './result.css';
+import AttractionCard from '../components/AttractionCard';
+import { recommendAttractionsApi } from '../api/attraction';
 
-const Result = ({ selectedCount }) => {
-  const navigate = useNavigate();
+const Result = ({
+  pageIndex,
+  setPageIndex,
+  recommendRequest,
+  setRecommendRequest,
+  defaultRecommendRequest,
+}) => {
   const [displayedCombos, setDisplayedCombos] = useState(2);
-  const [flippedCards, setFlippedCards] = useState({});
-  
+  const [attractionGroups, setAttractionGroups] = useState([]);
+  const [isDisplayedMore, setIsMore] = useState(false);
 
-  const getRandomCombos = () => {
-    const shuffled = [...data].sort(() => 0.5 - Math.random()); 
-    const combos = [];
-    for (let i = 0; i < Math.ceil(shuffled.length / selectedCount); i++) {
-      const group = shuffled.slice(i * selectedCount, (i + 1) * selectedCount); 
-      if (group.length > 0) combos.push(group);
-    }
-    return combos;
-  };
-
-  const [combos] = useState(getRandomCombos());
+  const shortedDisplayCount = 2;
+  const expanedDisplayCount = 5;
 
   const handleMoreCombos = () => {
-    if (displayedCombos < combos.length) {
-      setDisplayedCombos(displayedCombos + 2);
-    }
+    setDisplayedCombos(
+      isDisplayedMore ? shortedDisplayCount : expanedDisplayCount,
+    );
+    setIsMore(!isDisplayedMore);
   };
 
-  const handleCardClick = (index) => {
-    setFlippedCards((prevState) => ({
-      ...prevState,
-      [index]: !prevState[index],
-    }));
-  };
+  function handleHomeButtonClick() {
+    setRecommendRequest(defaultRecommendRequest);
+  }
+
+  function handlePrevious() {
+    setPageIndex(pageIndex - 1);
+  }
+
+  useEffect(() => {
+    async function fetchData() {
+      const data = await recommendAttractionsApi(recommendRequest);
+
+      setAttractionGroups(data.attractionGroups);
+    }
+    fetchData();
+  }, [recommendRequest]);
 
   return (
     <div className="container">
       <div className="progress-bar">
-        <div className="progress" style={{ width: "100%" }}></div>
+        <div className="progress" style={{ width: '100%' }}></div>
       </div>
       <h1>놀이기구 추천 조합을 확인해보세요!</h1>
       <p className="subtext">각 카드를 클릭해보세요☺︎</p>
       <div className="combos">
-        {combos.slice(0, displayedCombos).map((combo, comboIndex) => (
-          <div key={comboIndex} className="combo-container">
-            <div className="combo-label">
-              {String.fromCharCode(65 + comboIndex)}
-            </div>
-            <div className="combo-box">
-              <div className="items-wrapper">
-                {combo.map((item, itemIndex) => {
-                  const globalIndex = comboIndex * 4 + itemIndex;
-                  const isFlipped = flippedCards[globalIndex] || false;
-
-                  return (
-                    <div
-                      key={itemIndex}
-                      className={`item-card ${isFlipped ? "flipped" : ""}`}
-                      onClick={() => handleCardClick(globalIndex)}
-                    >
-                      <div className="item-card-front">
-                        <div className="item-order">
-                          <span>{itemIndex + 1}</span>
-                        </div>
-                        <div className="item-name">
-                          {item["놀이기구 이름"]}
-                        </div>
-                        <div className="item-image-wrapper">
-                          <img
-                            src={item.image_url}
-                            alt={item["놀이기구 이름"]}
-                            className="item-image"
-                          />
-                        </div>
-                      </div>
-                      <div className="item-card-back">
-                        <div className="item-image-wrapper">
-                          <div className="item-details">
-                            <div>
-                              <strong>• 설명:</strong> {item.설명}
-                            </div>
-                            <div>
-                              <strong>• 위치:</strong> {item.위치정보}
-                            </div>
-                            <div>
-                              <strong>• 난이도:</strong> {item["난이도(스릴)"]}
-                            </div>
-                            <div>
-                              <strong>• 이용 정보:</strong> {item["이용 정보"]}
-                            </div>
-                            <div>
-                              <strong>• 컨셉/태그:</strong> {item["컨셉/태그"]}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
+        {attractionGroups
+          .slice(0, displayedCombos)
+          .map((attractionGroup, attractionGroupIndex) => (
+            <div key={attractionGroupIndex} className="combo-container">
+              <div className="combo-label">
+                {String.fromCharCode(65 + attractionGroupIndex)}
+              </div>
+              <div className="combo-box">
+                <div className="items-wrapper">
+                  {attractionGroup.attractions.map(
+                    (attraction, attractionIndex) => (
+                      <AttractionCard
+                        key={attractionIndex}
+                        attraction={attraction}
+                        attractionIndex={attractionIndex}
+                      />
+                    ),
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
-
-      {displayedCombos < combos.length && (
-        <button className="more-btn" onClick={handleMoreCombos}>
-          더보기
-        </button>
-      )}
+      <button className="more-btn" onClick={handleMoreCombos}>
+        {isDisplayedMore ? '접기' : '더보기'}
+      </button>
       <div className="navigation">
-        <button className="prev-button" onClick={() => navigate("/page5")}>
+        <button className="prev-button" onClick={handleHomeButtonClick}>
           이전
         </button>
-        <button className="next-button" onClick={() => navigate("/")}>
+        <button className="next-button" onClick={handlePrevious}>
           Home
         </button>
       </div>

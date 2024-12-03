@@ -1,20 +1,23 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-
-const Page2 = () => {
-  const [selectedOption, setSelectedOption] = useState(null);
-  const navigate = useNavigate();
-
+const Page2 = ({
+  pageIndex,
+  setPageIndex,
+  recommendRequest,
+  setRecommendRequest,
+}) => {
   const handleSelect = (option) => {
-    setSelectedOption(option);
+    setRecommendRequest({ ...recommendRequest, groupType: option });
   };
 
   const handleNext = async () => {
-    navigate("/page3", { state: { selectedOption } });
+    if (recommendRequest.groupType !== '') {
+      setPageIndex(pageIndex + 1);
+    } else {
+      alert('인원 형태를 선택해주세요!');
+    }
   };
 
   const handlePrevious = () => {
-    navigate("/page1"); 
+    setPageIndex(pageIndex - 1);
   };
 
   return (
@@ -26,29 +29,37 @@ const Page2 = () => {
       <p className="subtext">가족 / 친구 / 연인 / 혼자 </p>
       <div className="options" style={{ gap: '20px' }}>
         <div
-          className={`option ${selectedOption === 1 ? "selected" : ""}`}
-          onClick={() => handleSelect(1)}
+          className={`option ${
+            recommendRequest.groupType === 'family' ? 'selected' : ''
+          }`}
+          onClick={() => handleSelect('family')}
         >
           <img src="/assets/family.png" alt="가족" />
           <p className="subtext-context">가족</p>
         </div>
         <div
-          className={`option ${selectedOption === 2 ? "selected" : ""}`}
-          onClick={() => handleSelect(2)}
+          className={`option ${
+            recommendRequest.groupType === 'friends' ? 'selected' : ''
+          }`}
+          onClick={() => handleSelect('friends')}
         >
           <img src="/assets/couple.png" alt="연인" />
           <p className="subtext-context">연인</p>
         </div>
         <div
-          className={`option ${selectedOption === 3 ? "selected" : ""}`}
-          onClick={() => handleSelect(3)}
+          className={`option ${
+            recommendRequest.groupType === 'couple' ? 'selected' : ''
+          }`}
+          onClick={() => handleSelect('couple')}
         >
           <img src="/assets/friend.png" alt="친구" />
           <p className="subtext-context">친구</p>
         </div>
         <div
-          className={`option ${selectedOption === 4 ? "selected" : ""}`} 
-          onClick={() => handleSelect(4)}
+          className={`option ${
+            recommendRequest.groupType === 'solo' ? 'selected' : ''
+          }`}
+          onClick={() => handleSelect('solo')}
         >
           <img src="/assets/alone.png" alt="혼자" />
           <p className="subtext-context">혼자</p>
