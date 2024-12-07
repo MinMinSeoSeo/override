@@ -9,12 +9,17 @@ const Page4 = ({
 }) => {
   const difficultyLevels = recommendRequest.difficultyLevels;
 
+  const levelSort = (originalList) => {
+    const levelIndex = { 'low': 1, 'medium': 2, 'high': 3 };
+    return originalList.sort((a, b) => levelIndex[a] - levelIndex[b]);
+  };  
+
   const handleSelect = (option) => {
     let newDifficultyLevels = [];
 
     if (difficultyLevels.includes(option)) {
       // 이미 선택된 옵션을 클릭한 경우
-      if (difficultyLevels.length === 'high' && option === 'medium') {
+      if (difficultyLevels.length === 3 && option === 'medium') {
         // (예외 처리) 하, 중, 상이 모두 선택된 상황 => 중 클릭 => 중만 선택되도록 (나머지는 선택 해제)
         newDifficultyLevels = [option];
       } else {
@@ -24,14 +29,14 @@ const Page4 = ({
     } else {
       // 새로운(선택되지 않은) 옵션을 클릭한 경우
       if (
-        difficultyLevels.length === 'low' &&
-        Math.abs(difficultyLevels[0] - option) === 'medium'
+        difficultyLevels.length === 1 &&
+        (difficultyLevels[0] !== 'medium' && option !== 'medium')
       ) {
         // 하를 선택한 상황에서 상을 선택하거나, 상을 선택한 상황에서 하를 선택한 경우 => 하, 중, 상 모두 선택되도록
-        newDifficultyLevels = [('low', 'medium', 'high')];
+        newDifficultyLevels = ['low', 'medium', 'high'];
       } else {
         // 선택한 옵션 추가
-        newDifficultyLevels = [...difficultyLevels, option].sort();
+        newDifficultyLevels = levelSort([...difficultyLevels, option]);
       }
     }
 

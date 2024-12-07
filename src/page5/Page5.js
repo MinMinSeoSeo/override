@@ -8,7 +8,8 @@ const Container = styled.div`
 
 const TopContent = styled.div`
   display: flex;
-  padding: 0 1.5rem;
+  padding: 20px;
+  padding-bottom: 0px;
   flex-direction: column;
   align-items: center;
   flex: 1;
@@ -24,9 +25,9 @@ const Header = styled.header`
 
 const ProgressBar = styled.div`
   width: 40rem;
-  height: 0.75rem;
+  height: 5px;
   border-radius: 9999px;
-  background: #e5e5e5;
+  background: #ddd;
 
   .progress-bar-fill {
     width: ${(5 / 6) * 100}%;
@@ -53,9 +54,10 @@ const InnerContent = styled.div`
 
 const Heading = styled.h1`
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 700;
   margin: 0;
+  margin-bottom: 20px;
 `;
 
 const BadgeList = styled.div`
