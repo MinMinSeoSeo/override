@@ -77,6 +77,7 @@ const Page1 = ({
             .time-input-block label {
               font-size: 1.2rem;
               margin-bottom: 8px;
+              font-weight: 500;
             }
 
             .error {
@@ -84,20 +85,13 @@ const Page1 = ({
               color: red;
             }
 
-            .progress-bar {
-              width: 100%;
-              background-color: #ddd;
-              height: 10px;
-              margin-bottom: 20px;
-              position: relative;
-            }
           `}
         </style>
         <div className="progress-bar">
           <div className="progress" style={{ width: `${(1 / 6) * 100}%` }}></div>
         </div>
         <h1>놀이공원을 즐길 시간대를 입력해주세요.</h1>
-        <p className="subtext"> 10:00~22:00 </p>
+        <p className="subtext"> 롯데월드 운영시간 : 10:00 AM ~ 10:00 PM </p>
         <div className="time-container">
           <div className="time-inputs">
             <div className="time-input-block">
