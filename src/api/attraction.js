@@ -28,8 +28,16 @@ export async function recommendAttractionsApi({
     }
 
     const data = await res.json();
+    
     return data;
   } catch (error) {
+    console.log('request: '+JSON.stringify({
+      attractionCount,
+      groupType,
+      ageGroupStatus,
+      difficultyLevels,
+      themeTags,
+    }));
 
     console.error(error);
 

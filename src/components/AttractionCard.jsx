@@ -29,19 +29,19 @@ export default function AttractionCard({ attraction, attractionIndex }) {
         <div className="item-image-wrapper">
           <div className="item-details">
             <div>
-              <strong>• 설명:</strong> {attraction.설명}
+              <strong>• 설명:</strong> {attraction.description}
             </div>
             <div>
-              <strong>• 위치:</strong> {attraction.위치정보}
+              <strong>• 위치:</strong> {attraction.location}
             </div>
             <div>
-              <strong>• 난이도:</strong> {attraction['난이도(스릴)']}
+              <strong>• 난이도:</strong> {attraction.difficulty}
             </div>
             <div>
-              <strong>• 이용 정보:</strong> {attraction['이용 정보']}
+              <strong>• 이용 정보:</strong> {attraction.usageInfo}
             </div>
             <div>
-              <strong>• 컨셉/태그:</strong> {attraction['컨셉/태그']}
+              <strong>• 컨셉/태그:</strong> {attraction.concept}
             </div>
           </div>
         </div>
