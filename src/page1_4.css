@@ -2,8 +2,10 @@
   text-align: center;
   font-family: Arial, sans-serif;
 
-  padding: 0 1.5rem;
+  padding: 20px; /*수정1*/
+  padding-bottom: 0; /*수정7*/
   height: 100vh;
+  box-sizing: border-box; /*수정8*/
 
   display: flex;
   flex-direction: column;
@@ -11,11 +13,10 @@
   justify-content: space-between;
 }
 
-
 .progress-bar {
   width: min(40rem, calc(100vw - 3rem));
-  height: 0.75rem;
-  background-color: #e5e5e5;
+  height: 5px; /*수정2*/
+  background-color: #ddd; /*수정3*/
   border-radius: 9999px;
   margin-top: 3rem;
   margin-bottom: auto;
@@ -28,8 +29,9 @@
 }
 
 h1 {
-  font-size: 24px;
+  font-size: 1.8rem; /*수정4*/
   font-weight: bold;
+  margin-bottom: 20px; /*수정5*/
 }
 
 .subtext {
@@ -48,6 +50,7 @@ h1 {
   display: flex;
   justify-content: space-around;
   margin-top: 30px;
+  margin-bottom: 30px; /*수정6*/
 }
 
 .option {
