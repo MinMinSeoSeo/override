@@ -7,6 +7,16 @@ export default function AttractionCard({ attraction, attractionIndex }) {
     setIsFlipped((prevState) => !prevState);
   }
 
+  function difficulty2Korean(difficulty) {
+    if (difficulty === 'high') {
+      return '상';
+    } else if (difficulty === 'middle') {
+      return '중';
+    } else if (difficulty === 'low') {
+      return '하';
+    }
+  }
+
   return (
     <div
       className={`item-card ${isFlipped ? 'flipped' : ''}`}
@@ -35,7 +45,7 @@ export default function AttractionCard({ attraction, attractionIndex }) {
               <strong>• 위치:</strong> {attraction.location}
             </div>
             <div>
-              <strong>• 난이도:</strong> {attraction.difficulty}
+              <strong>• 난이도:</strong> {difficulty2Korean(attraction.difficulty)}
             </div>
             <div>
               <strong>• 이용 정보:</strong> {attraction.usageInfo}
