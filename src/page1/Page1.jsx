@@ -75,6 +75,27 @@ const Page1 = ({
             color: #888;
             transition: all 0.3s;
           }
+
+          @media (max-width: 767px) {
+            .option {
+              width: 97px;
+              height: 97px;
+            }
+
+            .option.selected {
+              width: 102px;
+              height: 102px;
+              border-width: 2px;
+            }
+
+            .options {
+              gap: 10px;
+              flex-wrap: wrap;
+              justify-content: center;
+            }
+
+          }
+        
         `}
       </style>
       <div className="progress-bar">
