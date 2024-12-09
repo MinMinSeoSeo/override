@@ -22,7 +22,8 @@ const Header = styled.header`
   justify-content: center;
   align-items: center;
   @media (max-width: 767px) {
-    width: 100%; 
+    width: 100%;
+    padding-top: 1rem;
   }
 `;
 
@@ -39,7 +40,8 @@ const ProgressBar = styled.div`
     background: #58cc02;
   }
   @media (max-width: 767px) {
-    width: 95%;
+    width: 90%;
+    height: 4px;
   }
 `;
 
@@ -104,6 +106,9 @@ const ButtonWrapper = styled.div`
   width: 48rem;
   justify-content: space-between;
   align-items: center;
+  @media (max-width: 767px) {
+    justify-content: center;
+    gap: min(32rem, calc(100vw - 20rem));
 `;
 
 const Button = styled.button`
@@ -125,6 +130,11 @@ const Button = styled.button`
   font-weight: 600;
   line-height: 1rem;
   cursor: pointer;
+  @media (max-width: 767px) {
+    max-width: 6rem;
+    font-size: 1rem;
+    padding: 0.8rem 1.2rem;
+  }
 `;
 
 const Page5 = ({
