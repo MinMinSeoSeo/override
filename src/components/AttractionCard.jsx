@@ -10,7 +10,7 @@ export default function AttractionCard({ attraction, attractionIndex }) {
   function difficulty2Korean(difficulty) {
     if (difficulty === 'high') {
       return '상';
-    } else if (difficulty === 'middle') {
+    } else if (difficulty === 'medium') {
       return '중';
     } else if (difficulty === 'low') {
       return '하';
