@@ -27,6 +27,7 @@ const Result = ({
 
   function handleHomeButtonClick() {
     setRecommendRequest(defaultRecommendRequest);
+    setPageIndex(0);
   }
 
   function handlePrevious() {
@@ -35,9 +36,12 @@ const Result = ({
 
   useEffect(() => {
     async function fetchData() {
+      //alert(JSON.stringify(recommendRequest));
       const data = await recommendAttractionsApi(recommendRequest);
 
-      setAttractionGroups(data.attractionGroups);
+      if (data) { //if문 추가 -> Home버튼 눌렀을 때 발생하는 오류 해결 (data가 none이어서 속성을 추출 못하며 오류 발생)
+        setAttractionGroups(data.attractionGroups);
+      }
     }
     fetchData();
   }, [recommendRequest]);
@@ -77,10 +81,10 @@ const Result = ({
         {isDisplayedMore ? '접기' : '더보기'}
       </button>
       <div className="navigation">
-        <button className="prev-button" onClick={handleHomeButtonClick}>
+        <button className="prev-button" onClick={handlePrevious}>
           이전
         </button>
-        <button className="next-button" onClick={handlePrevious}>
+        <button className="next-button" onClick={handleHomeButtonClick}>
           Home
         </button>
       </div>

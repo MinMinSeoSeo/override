@@ -68,6 +68,7 @@ const App = () => {
         pageIndex={pageIndex}
         setPageIndex={setPageIndex}
         recommendRequest={recommendRequest}
+        setRecommendRequest={setRecommendRequest}
         defaultRecommendRequest={defaultRecommendRequest}
       />
     ),
