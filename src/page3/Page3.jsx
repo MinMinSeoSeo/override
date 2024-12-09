@@ -22,6 +22,22 @@ const Page3 = ({
 
   return (
     <div className="container">
+      <style>
+        {`
+          @media (max-width: 767px) {
+            .options {
+              display: grid;
+              grid-template-columns: repeat(2, 1fr); 
+              gap: 20px;
+              justify-content: center;
+            }
+            .option {
+              width: 120px;
+              height: 140px;
+            }
+          }
+        `}
+      </style>
       <div className="progress-bar">
         <div className="progress" style={{ width: `${(3 / 6) * 100}%` }}></div>
       </div>

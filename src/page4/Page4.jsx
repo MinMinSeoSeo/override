@@ -18,24 +18,18 @@ const Page4 = ({
     let newDifficultyLevels = [];
 
     if (difficultyLevels.includes(option)) {
-      // 이미 선택된 옵션을 클릭한 경우
       if (difficultyLevels.length === 3 && option === 'medium') {
-        // (예외 처리) 하, 중, 상이 모두 선택된 상황 => 중 클릭 => 중만 선택되도록 (나머지는 선택 해제)
         newDifficultyLevels = [option];
       } else {
-        // 그 외 경우엔, 정상적으로 클릭한 옵션에 대해 선택 해제 실행
         newDifficultyLevels = difficultyLevels.filter((o) => o !== option);
       }
     } else {
-      // 새로운(선택되지 않은) 옵션을 클릭한 경우
       if (
         difficultyLevels.length === 1 &&
         (difficultyLevels[0] !== 'medium' && option !== 'medium')
       ) {
-        // 하를 선택한 상황에서 상을 선택하거나, 상을 선택한 상황에서 하를 선택한 경우 => 하, 중, 상 모두 선택되도록
         newDifficultyLevels = ['low', 'medium', 'high'];
       } else {
-        // 선택한 옵션 추가
         newDifficultyLevels = levelSort([...difficultyLevels, option]);
       }
     }

@@ -30,4 +30,14 @@
 #round-boundary.visible {
   display: block;
 }
+/* 
+@media (max-width: 767px) {
+  #boundary {
+    width: 417px;
+    height: 117px;
+  }
 
+  #round-boundary {
+    height: 114px; 
+  }
+} */

@@ -5,7 +5,7 @@
   width: 100vw;
   height: 100vh;
   margin: 0 auto;
-  position: center;
+  position: relative;
 }
 
 .home .frame {
@@ -134,4 +134,43 @@
 
 .home .next-button:hover {
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3); 
+}
+
+/* 반응형 스타일 (모바일: 767px 이하) */
+@media (max-width: 767px) {
+  /* .home .frame {
+    padding: 10px;
+  }
+
+
+
+  .home .group {
+    width: 300px;
+    height: auto;
+  }
+
+  .home .frame-wrapper {
+    width: 300px;
+    top: 50px;
+  } */
+
+  .home .div {
+    gap: 50px;
+  }
+
+  .logo {
+    width: 400px;
+    height: auto;
+  }
+
+  .home .p {
+    font-size: 15px;
+    line-height: 1.5;
+    margin-top: 1px;
+  }
+
+  .home .next-button {
+    padding: 15px 20px;
+    font-size: 15px;
+  }
 }
