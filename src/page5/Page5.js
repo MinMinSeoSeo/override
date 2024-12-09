@@ -21,6 +21,9 @@ const Header = styled.header`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @media (max-width: 767px) {
+    width: 100%; 
+  }
 `;
 
 const ProgressBar = styled.div`
@@ -34,6 +37,9 @@ const ProgressBar = styled.div`
     height: 100%;
     border-radius: 9999px;
     background: #58cc02;
+  }
+  @media (max-width: 767px) {
+    width: 95%;
   }
 `;
 
@@ -58,6 +64,10 @@ const Heading = styled.h1`
   font-weight: 700;
   margin: 0;
   margin-bottom: 20px;
+  @media (max-width: 767px) {
+      font-size: 1.4rem; 
+      margin-bottom: 10px; 
+  }
 `;
 
 const BadgeList = styled.div`
@@ -144,6 +154,25 @@ const Page5 = ({
 
   return (
     <Container>
+      <style>
+        {`
+          html, body {
+            min-width: 513px;
+            overflow-x: hidden; 
+          }
+          @media (max-width: 767px) {
+            .progress-bar {
+              width: 90%; /* 모바일에서 폭 축소 */
+              height: 4px; /* 모바일에서 높이 축소 */
+            }
+      
+            h1 {
+              font-size: 1.4rem; /* 모바일에서 폰트 크기 축소 */
+              margin-bottom: 10px; /* 하단 여백 축소 */
+            }
+          }
+        `}
+      </style>
       <TopContent>
         <Header>
           <ProgressBar>
