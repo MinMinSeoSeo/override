@@ -75,8 +75,14 @@ const Heading = styled.h1`
 const BadgeList = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 0.75rem;
+  width: 80%;
+  max-width: 60rem;
+  @media (max-width: 767px) {
+    width: 80%;
+  }
 `;
 
 const Badge = styled.div`
@@ -91,6 +97,9 @@ const Badge = styled.div`
   background: ${(props) =>
     props.$variant === 'primary' ? '#F0F8F0' : '#FFFFFF'};
   cursor: pointer;
+  @media (max-width: 767px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const BottomContent = styled.div`
@@ -143,7 +152,7 @@ const Page5 = ({
   recommendRequest,
   setRecommendRequest,
 }) => {
-  const badgeList = ['인생샷', '공포', '동심', '짜릿함'];
+  const badgeList = ['짜릿함', '동심', '공포', '인생샷', '모험', '속도감', '고공(높이)', '캐릭터', '회전', '화려함', '감상', '활동/체험', '첨단기술', '몽환', '인기', '야외', '실내', '다같이', '데이트'];
 
   function handleBadgeClick(badge) {
     setRecommendRequest({
