@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import './Home.css';
 
 export const Home = ({ pageIndex, setPageIndex }) => {
@@ -8,6 +9,9 @@ export const Home = ({ pageIndex, setPageIndex }) => {
 
   return (
     <div className="home">
+      <Helmet>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Helmet>
       <div className="frame">
         <div className="div">
           <div className="group">

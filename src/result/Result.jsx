@@ -3,6 +3,7 @@ import '../page1_4.css';
 import './result.css';
 import AttractionCard from '../components/AttractionCard';
 import { recommendAttractionsApi } from '../api/attraction';
+import { Helmet } from 'react-helmet';
 
 const Result = ({
   pageIndex,
@@ -48,6 +49,9 @@ const Result = ({
 
   return (
     <div className="container">
+      <Helmet>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Helmet>
       <div className="progress-bar">
         <div className="progress" style={{ width: '100%' }}></div>
       </div>
