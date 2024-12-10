@@ -66,7 +66,8 @@
 }
 
 .item-card-back .item-image-wrapper {
-  overflow-y: auto;
+  overflow-x: hidden; /* 가로 스크롤 비활성화 */
+  overflow-y: auto; 
 }
 
 .item-card-front,
