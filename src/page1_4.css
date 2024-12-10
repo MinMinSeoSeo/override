@@ -1,6 +1,7 @@
 html, body {
   min-width: 513px; 
   overflow-x: hidden; 
+  height: calc(var(--vh, 1vh) * 100);
 }
 
 .container {
@@ -9,7 +10,7 @@ html, body {
 
   padding: 20px; /*수정1*/
   padding-bottom: 0; /*수정7*/
-  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   box-sizing: border-box; /*수정8*/
 
   display: flex;
