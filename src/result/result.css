@@ -66,8 +66,13 @@
 }
 
 .item-card-back .item-image-wrapper {
-  overflow-x: hidden; /* 가로 스크롤 비활성화 */
-  overflow-y: auto; 
+  overflow-x: hidden;
+  display: block;  
+  overflow-y: auto;
+  max-height: 100%; 
+  width: 100%;    
+  padding: 10px; 
+  box-sizing: border-box; 
 }
 
 .item-card-front,
