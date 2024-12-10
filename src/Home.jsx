@@ -9,9 +9,6 @@ export const Home = ({ pageIndex, setPageIndex }) => {
 
   return (
     <div className="home">
-      <Helmet>
-        <meta name="viewport" content="width=device-width, initial-scale=0.8" />
-      </Helmet>
       <div className="frame">
         <div className="div">
           <div className="group">
