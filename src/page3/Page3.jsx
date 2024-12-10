@@ -1,3 +1,5 @@
+import { Helmet } from 'react-helmet';
+
 const Page3 = ({
   pageIndex,
   setPageIndex,
@@ -22,6 +24,9 @@ const Page3 = ({
 
   return (
     <div className="container">
+      <Helmet>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Helmet>
       <style>
         {`
           @media (max-width: 767px) {

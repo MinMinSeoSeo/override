@@ -1,5 +1,6 @@
 import '../page1_4.css';
 import './page4.css';
+import { Helmet } from 'react-helmet';
 
 const Page4 = ({
   pageIndex,
@@ -78,6 +79,9 @@ const Page4 = ({
 
   return (
     <div className="container">
+      <Helmet>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Helmet>
       <style>
         {`
           .options {
