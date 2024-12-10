@@ -241,9 +241,6 @@ const Page5 = ({
 
   return (
     <Container>
-      <Helmet>
-        <meta name="viewport" content="width=device-width, initial-scale=0.8" />
-      </Helmet>
       <style>
         {`
           html, body {
