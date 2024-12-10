@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -75,8 +76,14 @@ const Heading = styled.h1`
 const BadgeList = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 0.75rem;
+  width: 80%;
+  max-width: 60rem;
+  @media (max-width: 767px) {
+    width: 80%;
+  }
 `;
 
 const Badge = styled.div`
@@ -91,6 +98,35 @@ const Badge = styled.div`
   background: ${(props) =>
     props.$variant === 'primary' ? '#F0F8F0' : '#FFFFFF'};
   cursor: pointer;
+  align-items: center;
+  @media (max-width: 767px) {
+    font-size: 0.9rem;
+  }
+`;
+
+const AddBadge = styled(Badge)`
+  background: #e0e0e0;
+  border: 2px dashed #a0a0a0;
+  color: #555555;
+  cursor: pointer;
+  padding-top: 0.03rem;
+  padding-left: 0.45rem;
+  padding-right: 0.45rem;
+`;
+
+const InputBadge = styled.input`
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  border: 2px solid #4CAF50;
+  background: #FFFFFF;
+  outline: none;
+  width: auto;
+  min-width: 5rem;
+  @media (max-width: 767px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const BottomContent = styled.div`
@@ -109,6 +145,7 @@ const ButtonWrapper = styled.div`
   @media (max-width: 767px) {
     justify-content: center;
     gap: min(32rem, calc(100vw - 20rem));
+  }
 `;
 
 const Button = styled.button`
@@ -143,7 +180,16 @@ const Page5 = ({
   recommendRequest,
   setRecommendRequest,
 }) => {
-  const badgeList = ['인생샷', '공포', '동심', '짜릿함'];
+  const [badgeList, setBadgeList] = useState([
+    '짜릿함', '동심', '공포', '인생샷', '모험', '속도감', '고공(높이)',
+    '캐릭터', '회전', '화려함', '감상', '활동/체험', '첨단기술',
+    '몽환', '인기', '야외', '실내', '다같이', '데이트'
+  ]);
+  
+  // 추가된 태그 입력 상태
+  const [isAdding, setIsAdding] = useState(false);
+  const [newBadge, setNewBadge] = useState('');
+  const [error, setError] = useState(''); // 중복 태그 에러 메시지 상태
 
   function handleBadgeClick(badge) {
     setRecommendRequest({
@@ -152,6 +198,36 @@ const Page5 = ({
         ? recommendRequest.themeTags.filter((tag) => tag !== badge)
         : [...recommendRequest.themeTags, badge],
     });
+  }
+
+  function handleAddBadge() {
+    setIsAdding(true);
+    setError('');
+  }
+
+  function handleInputChange(e) {
+    setNewBadge(e.target.value);
+    if (error) setError('');
+  }
+
+  function handleInputSubmit(e) {
+    e.preventDefault();
+    const trimmedBadge = newBadge.trim();
+    if (!trimmedBadge) {
+      setError('태그를 입력해주세요.');
+      return;
+    }
+    if (badgeList.includes(trimmedBadge)) {
+      setError('이미 존재하는 태그입니다.');
+      return;
+    }
+    setBadgeList([...badgeList, trimmedBadge]);
+    setRecommendRequest({
+      ...recommendRequest,
+      themeTags: [...recommendRequest.themeTags, trimmedBadge],
+    });
+    setNewBadge('');
+    setIsAdding(false);
   }
 
   function handleNext() {
@@ -193,9 +269,9 @@ const Page5 = ({
           <InnerContent>
             <Heading>경험하고 싶은 테마가 있다면 모두 선택해주세요.</Heading>
             <BadgeList>
-              {badgeList.map((badge, index) => (
+              {badgeList.map((badge) => (
                 <Badge
-                  key={index}
+                  key={badge}
                   $variant={
                     recommendRequest.themeTags.includes(badge)
                       ? 'primary'
@@ -206,6 +282,28 @@ const Page5 = ({
                   {badge}
                 </Badge>
               ))}
+              {!isAdding && (
+                <AddBadge onClick={handleAddBadge}>
+                  +
+                </AddBadge>
+              )}
+              {isAdding && (
+                <form onSubmit={handleInputSubmit}>
+                  <InputBadge
+                    type="text"
+                    value={newBadge}
+                    onChange={handleInputChange}
+                    autoFocus
+                    placeholder="태그 입력"
+                    onBlur={() => {
+                      setIsAdding(false);
+                      setNewBadge('');
+                      setError('');
+                    }}
+                  />
+                  {error && <span style={{ color: 'red', marginLeft: '0.5rem' }}>{error}</span>}
+                </form>
+              )}
             </BadgeList>
           </InnerContent>
         </Main>
