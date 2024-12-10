@@ -139,13 +139,12 @@
 /* 반응형 스타일 (모바일: 767px 이하) */
 @media (max-width: 767px) {
 
-
   .home .div {
     gap: 50px;
   }
 
   .logo {
-    width: 400px;
+    width: 300px;
     height: auto;
   }
 
