@@ -3,7 +3,7 @@
 :root {
     --vh: 1vh; /* 초기 값 설정 */
   }
-
+/*
   body, html, #root {
     height: 100%;
     margin: 0;
@@ -17,13 +17,13 @@
     align-items: center;
     justify-content: center;
   }
-  
-  /* 예시: 풀 스크린 섹션 */
+  */
+  /* 예시: 풀 스크린 섹션
   .full-height-section {
     height: calc(var(--vh) * 100);
     width: 100%;
     background-color: lightblue;
   }
   
-  /*기타 필요한 스타일 */
+기타 필요한 스타일 */
   
