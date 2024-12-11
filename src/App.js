@@ -7,6 +7,8 @@ import Page4 from './page4/Page4';
 import Page5 from './page5/Page5';
 import Result from './result/Result';
 
+import useVh from './hooks/useVh';
+
 const defaultRecommendRequest = {
   attractionCount: 0,
   groupType: '',
@@ -16,6 +18,9 @@ const defaultRecommendRequest = {
 };
 
 const App = () => {
+  // useVh 커스텀 훅 호출
+  useVh();
+
   const [pageIndex, setPageIndex] = useState(0);
   const [recommendRequest, setRecommendRequest] = useState(
     defaultRecommendRequest,
@@ -74,7 +79,16 @@ const App = () => {
     ),
   }[pageIndex];
 
-  return currentPage;
+  
+  return (
+
+    <div className="app-container">
+
+      {currentPage}
+
+    </div>
+
+  );
 };
 
 export default App;

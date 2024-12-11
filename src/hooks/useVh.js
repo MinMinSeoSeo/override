@@ -15,9 +15,9 @@ const useVh = () => {
     // 초기 설정
     setVh();
 
-    // 이벤트 리스너 추가: 창 크기 변경 시 재계산
+    // 이벤트 리스너 추가: 창 크기 변경 및 방향 전환 시 재계산
     window.addEventListener('resize', setVh);
-    window.addEventListener('orientationchange', setVh); // 모바일 기기 방향 전환 시 재계산
+    window.addEventListener('orientationchange', setVh);
 
     // 컴포넌트 언마운트 시 이벤트 리스너 제거
     return () => {
