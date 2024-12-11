@@ -8,6 +8,7 @@ import Page5 from './page5/Page5';
 import Result from './result/Result';
 
 import useVh from './hooks/useVh';
+import './App.css';
 
 const defaultRecommendRequest = {
   attractionCount: 0,
